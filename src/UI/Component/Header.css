@@ -1,0 +1,75 @@
+.btn{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.navbar{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: rgb(134, 144, 144); */
+    padding: 0 30px;
+    border-bottom: 1px solid gray;
+}
+
+.left{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left i{
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #0000ffa2;
+}
+
+.right button{
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    border: 2px solid #4a4af28b;
+    background-color: transparent;
+
+    /* box-shadow: 0 0 2px .1px rgb(70, 70, 255); */
+    color: rgb(18, 18, 255);
+    cursor: pointer;
+}
+
+.navbar-icons{
+    box-shadow: 0 0 2px .1px #868686;
+    padding: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: orange;
+
+    cursor: pointer;
+}
+
+.navbar-avatar{
+    box-shadow: 0 0 2px .1px #868686;
+    padding: 5px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    img{
+        width: 35px;
+    }
+}
