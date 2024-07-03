@@ -10,19 +10,14 @@ import Dashboard from "../View/Dashboard";
 const DefaultLayout = () => {
 
     const sideBar = useSelector(state => state.SidebarToggleSlice.sideBar);
-    const contentSideBar = useSelector(state => state.SidebarToggleSlice.contentSideBar);
 
     return (
         <>
         <Header />
-        <div className='d-flex flex-col'>
-        {sideBar && (
-            < >
-                <SideBar />
-                {contentSideBar && <ContentSideBar />}
-            </>
-        )}
-        <Dashboard />
+        <div className="d-flex flex-row">
+            {
+                sideBar && <SideBar />
+            }
         <Outlet />
         </div>
         
@@ -31,3 +26,21 @@ const DefaultLayout = () => {
 }
 
 export default DefaultLayout;
+
+
+
+
+// <>
+// <Header />
+// <div className='d-flex flex-col'>
+// {sideBar && (
+//     < >
+//         <SideBar />
+//         {contentSideBar && <ContentSideBar />}
+//     </>
+// )}
+// {/* <Dashboard /> */}
+// <Outlet />
+// </div>
+
+// </>

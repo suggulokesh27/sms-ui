@@ -2,10 +2,12 @@ import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import Student from "../View/Student";
 import routes from "../routes";
+import Dashboard from "../View/Dashboard";
 
 const Content = () => {
     return(
-       <Suspense fallback={
+        <div>
+             <Suspense fallback={
         <p>
             content Loading...
         </p>
@@ -22,6 +24,8 @@ const Content = () => {
             }
         </Routes>
        </Suspense>
+        </div>
+      
     )
 }
 

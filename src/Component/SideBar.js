@@ -14,25 +14,25 @@ const navItems = [{
     to: "/student"
 },
 {
-    name: 'Teacher',
+    name: 'Exam',
     icon: GiPapers,
     to: "/teacher"
 },
 {
-    name: 'Parent',
+    name: 'Academics',
     icon: ImBooks,
     to: "/parent"
 }, {
-    name: "FcCollaboration",
+    name: "Hr",
     icon: FcCollaboration,
     to: "/ect"
 },
 {
-    name: 'Parent',
+    name: 'Collaborate',
     icon: MdInsertDriveFile,
     to: "/parent"
 }, {
-    name: 'Parent',
+    name: 'Add-Ons',
     icon: MdOutlineAddToPhotos,
     to: "/parent"
 },]
@@ -48,11 +48,15 @@ const SideBar = () => {
                     {
                         navItems.map((item, index) => {
                             return (
+                                <React.Fragment>
                                 <li key={index}>
                                     <Link to={item.to}>
                                         <item.icon />
                                     </Link>
                                 </li>
+                                <p>{item.name}</p>
+                                </React.Fragment>
+                                
                             )
 
                         })
