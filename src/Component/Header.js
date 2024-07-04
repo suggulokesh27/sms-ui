@@ -35,7 +35,7 @@ const Header = () => {
             </div>
 
             <div className='right'>
-                <button>I am in button</button>
+                <button>Code-Branch-School Name</button>
                 <div className='navbar-icons'> <HiMiniSquares2X2 /> </div>
                 <div className='navbar-icons'> <AiOutlineArrowsAlt /> </div>
                 <div className='navbar-icons'> <FaRegBell /> </div>
