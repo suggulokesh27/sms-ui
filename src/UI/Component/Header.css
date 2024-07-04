@@ -5,12 +5,12 @@
 }
 
 .navbar{
-    width: 100%;
+    width: 100vw;
     height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: rgb(134, 144, 144); */
+    background-color: rgb(194, 242, 242);
     padding: 0 30px;
     border-bottom: 1px solid gray;
 }
@@ -25,9 +25,8 @@
 .right{
     width: 700px;
     display: flex;
-    gap: 30px;
     align-items: center;
-    justify-content: right;
+    justify-content: space-between;
 }
 
 .left i{
@@ -64,6 +63,7 @@
 .navbar-avatar{
     box-shadow: 0 0 2px .1px #868686;
     padding: 5px;
+    margin-left: 20px;
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
@@ -72,5 +72,21 @@
     cursor: pointer;
     img{
         width: 25px;
+    }
+}
+
+
+
+@media (max-width: 600px){
+    .left{
+        width: 130px;
+    }
+
+    .right .icons{
+        display: none;
+    }
+
+    .right{
+        width: auto;
     }
 }

@@ -35,10 +35,19 @@ const Header = () => {
             </div>
 
             <div className='right'>
+<<<<<<< HEAD
                 <button>Code-Branch-School Name</button>
                 <div className='navbar-icons'> <HiMiniSquares2X2 /> </div>
                 <div className='navbar-icons'> <AiOutlineArrowsAlt /> </div>
                 <div className='navbar-icons'> <FaRegBell /> </div>
+=======
+                <div className="icons">
+                    <button>I am in button</button>
+                    <div className='navbar-icons'> <HiMiniSquares2X2 /> </div>
+                    <div className='navbar-icons'> <AiOutlineArrowsAlt /> </div>
+                    <div className='navbar-icons'> <FaRegBell /> </div>
+                </div>
+>>>>>>> b56e4c28b3f38cb74383bf687388c03fdb363f77
                 <div className='navbar-avatar'> <img src='https://cdn-icons-png.freepik.com/512/145/145974.png' width={25} alt='avatar' /> </div>
             </div>
 
