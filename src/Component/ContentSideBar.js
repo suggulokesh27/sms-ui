@@ -4,6 +4,7 @@ import "../UI/Component/ContentSidebar.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 const ContentSideBar = ({navItems}) => {
+  
   const [showItem, setShowItem] = useState(null);
 
   const showHandler = (index) => {

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     sideBar : true,
-    contentSideBar : true
+    contentSideBar : false
 }
 
 const SidebarToggleSlice = createSlice({

@@ -6,10 +6,11 @@
 
 .sidedetails-ul{
     width: 350px;
+    height: 90vh;
     /* background-color: aquamarine; */
     list-style-type: none;
     padding-top: 20px;
-
+    overflow:scroll;
     border-right: 1px solid grey;
 }
 

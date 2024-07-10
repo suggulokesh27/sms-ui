@@ -11,7 +11,8 @@
     align-items: center;
     background-color: white;
     width: 100%;
-    margin: 5px;
+    margin: 15px;
     border-radius: 5px;
     box-shadow: 3px 3px rgb(132, 132, 132);
+    overflow: scroll;
 }
