@@ -1,14 +1,14 @@
 import React from "react";
 
 
-const Teacher = () => {
+const Exam = () => {
     return(
         <div>
             
-            Teacher
+            Exam
         </div>
     )
 }
 
 
-export default Teacher;
+export default Exam;

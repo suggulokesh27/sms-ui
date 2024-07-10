@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from 'react';
 // import DefaultLayout from './Layout/DefaultLayout';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import routes from './routes';
-import Student from './View/Student';
 
 const DefaultLayout = lazy(()=> import("./Layout/DefaultLayout"))
 

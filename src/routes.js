@@ -1,6 +1,6 @@
 import React from "react";
-const Student = React.lazy(()=> import("./View/Student"));
-const Teacher = React.lazy(()=> import("./View/Teacher"));
+const Student = React.lazy(()=> import("./View/Student/Student"));
+const Teacher = React.lazy(()=> import("./View/Eaxm"));
 const Dashboard = React.lazy(()=> import("./View/Dashboard"));
 
 const routes = [

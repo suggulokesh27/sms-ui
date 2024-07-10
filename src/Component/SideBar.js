@@ -7,6 +7,9 @@ import { ImBooks } from "react-icons/im";
 import { FcCollaboration } from "react-icons/fc";
 import { MdInsertDriveFile } from "react-icons/md";
 import { MdOutlineAddToPhotos } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleContentSideBar } from "../Store/SidebarToggleSlice";
+import SidebarToggleSlice from "../Store/SidebarToggleSlice";
 
 const navItems = [{
     name: 'Student',
@@ -16,28 +19,36 @@ const navItems = [{
 {
     name: 'Exam',
     icon: GiPapers,
-    to: "/teacher"
+    to: "/exam"
 },
 {
     name: 'Academics',
     icon: ImBooks,
-    to: "/parent"
+    to: "/academics"
 }, {
     name: "Hr",
     icon: FcCollaboration,
-    to: "/ect"
+    to: "/hr"
 },
 {
     name: 'Collaborate',
     icon: MdInsertDriveFile,
-    to: "/parent"
+    to: "/collaborate"
 }, {
     name: 'Add-Ons',
     icon: MdOutlineAddToPhotos,
-    to: "/parent"
+    to: "/addOns"
 },]
 
 const SideBar = () => {
+
+    const contentBarShow = useSelector(state => state.SidebarToggleSlice.contentSideBar);
+    const dispatch = useDispatch();
+
+    const contentSideBarShow = () => {
+            dispatch(toggleContentSideBar(!contentBarShow))
+    }
+
     return (
         <div className="sidebar-container">
             <div className="sidebar">
@@ -50,7 +61,7 @@ const SideBar = () => {
                             return (
                                 <React.Fragment>
                                 <li key={index}>
-                                    <Link to={item.to}>
+                                    <Link to={item.to} onClick={contentSideBarShow}>
                                         <item.icon />
                                     </Link>
                                 </li>
