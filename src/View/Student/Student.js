@@ -7,6 +7,8 @@ import StudentRegForm from "./StudentRegForm";
 import routes from "../../routes";
 import Content from "../../Component/Content";
 
+import SampleForm from "./SampleForm";
+
 const navItems = [
   {
     name: 'Students Information',
@@ -35,20 +37,31 @@ const Student = () => {
   const contentSideBar = useSelector(state => state.SidebarToggleSlice.contentSideBar);
 
   return (
-    <div className="d-flex flew-row" style={{
-      width: "100%",
-      height: "100%"
-    }}>
-      
-         <ContentSideBar navItems={navItems} />
-      
-      <div className="student-container">
-        <div className="body">
-         <Outlet />
-        </div>
+    <div className="mainContainer">
+      <div className="contentSidebar">
+        <ContentSideBar navItems={navItems} />
+      </div>
+      <div className="mainOutlet">
+        {/* <Outlet /> */}
+        <SampleForm />
       </div>
     </div>
   )
 }
 
 export default React.memo(Student);
+
+
+// <div className="d-flex flew-row" style={{
+    //   width: "100%",
+    //   height: "80%"
+    // }}>
+      
+    //      <ContentSideBar navItems={navItems} />
+      
+    //   <div className="student-container">
+    //     <div className="body">
+    //      <Outlet />
+    //     </div>
+    //   </div>
+    // </div>

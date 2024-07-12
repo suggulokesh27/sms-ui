@@ -1,16 +1,16 @@
 .sidebar-details{
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     height: 100%;
     width: 100%;
 }
 
 .sidedetails-ul{
-    width: 350px;
+    width: 300px;
     height: 90vh;
     /* background-color: aquamarine; */
     list-style-type: none;
     padding-top: 20px;
-    overflow:scroll;
+    overflow: auto;
     border-right: 1px solid grey;
 }
 

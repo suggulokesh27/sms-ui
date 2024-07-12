@@ -14,7 +14,7 @@ const DefaultLayout = () => {
     return (
         <>
         <Header />
-        <div className="d-flex flex-row">
+        <div className="d-flex flex-row sidebarOutlet">
             {
                 sideBar && <SideBar />
             }
