@@ -8,8 +8,8 @@
     height: 90vh;
     padding: 0 20px;
     border-right: 1px solid rgb(161, 161, 162);
-    overflow: auto;
-    /* background-color: yellow; */
+    overflow: scroll;
+    background-color: white;
 }
 
 .sidebar-icons{

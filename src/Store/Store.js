@@ -1,10 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import SidebarToggleSlice from "./SidebarToggleSlice";
+import { applyMiddleware, createStore } from "@reduxjs/toolkit";
+import rootReducer from "./rootReducer";
+import { thunk } from "redux-thunk";
 
-const Store = configureStore({
-   reducer : {
-    SidebarToggleSlice
-   }
-})
+
+const Store = createStore(rootReducer,applyMiddleware(thunk))
 
 export default Store;

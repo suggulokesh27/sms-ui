@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     sideBar : true,
-    contentSideBar : false
+    contentSideBar : false,
+    items : []
 }
 
 const SidebarToggleSlice = createSlice({
@@ -13,11 +14,14 @@ const SidebarToggleSlice = createSlice({
             state.sideBar = action.payload;
         },
         toggleContentSideBar : (state,action) => {
-            state.contentSideBar = action.payload
+            state.contentSideBar = action.payload;
+        },
+        setContentSideItems : (state,action) => {
+            state.items = action.payload;
         }
     }
 })
 
-export const { toggleSideBar,toggleContentSideBar } = SidebarToggleSlice.actions;
+export const { toggleSideBar,toggleContentSideBar,setContentSideItems } = SidebarToggleSlice.actions;
 
 export default SidebarToggleSlice.reducer;

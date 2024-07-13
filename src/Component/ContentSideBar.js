@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../UI/Component/ContentSidebar.css";
+import "./ContentSidebar.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 const ContentSideBar = ({navItems}) => {

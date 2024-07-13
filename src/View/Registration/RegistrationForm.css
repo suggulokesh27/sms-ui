@@ -23,13 +23,9 @@
   color: tomato;
 }
 .multi-steps > li:before {
-  content: "\f00c";
-  content: "\2713;";
-  content: "\10003";
-  content: "\10004";
-  content: "\2713";
+  content: "\2713"; 
   display: block;
-  margin: 0 auto 4px;
+  margin: 0 48% 10px;
   background-color: #fff;
   width: 36px;
   height: 36px;
@@ -48,8 +44,7 @@
   background-color: tomato;
   position: absolute;
   top: 16px;
-  left: 50%;
-  z-index: -1;
+  /* left: 50%; */
 }
 .multi-steps > li:last-child:after {
   display: none;

@@ -1,13 +1,12 @@
 import React from "react";
 
 
-const Exam = () => {
+const ExamRecords = () => {
     return(
         <div>
-            Exam
+            ExamRecords
         </div>
     )
 }
 
-
-export default Exam;
+export default ExamRecords;

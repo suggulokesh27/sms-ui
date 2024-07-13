@@ -1,35 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import StudentRegForm from '../Student/StudentRegForm';
 import './RegistrationForm.css';
-
-import StudentRegForm from './StudentRegForm';
+import ParentDetailsForm from '../Parent/ParentDetailsForm';
 
 const SampleForm = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    studentFirstName: '',
-    studentLastName: '',
-    studentGender: '',
-    studentDOB: '',
-    studentPhone: '',
-    studentAadhar: '',
-    studentGrade: '',
-    studentEmail: '',
-    studentAddress: '',
-    fatherName: '',
-    fatherContact: '',
-    motherName: '',
-    motherContact: '',
-    healthConditions: '',
-    allergies: '',
-    emergencyContact: ''
-  });
+ 
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
+    
   };
 
   const nextStep = () => {
@@ -43,7 +22,6 @@ const SampleForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Process formData here
-    console.log(formData);
   };
 
   const renderStep = () => {
@@ -51,11 +29,12 @@ const SampleForm = () => {
       case 1:
         return (
           <div className='formContainer'>
-            <h2>Student Information</h2>
+            {/* <h2>Student's Information</h2> */}
 
               <StudentRegForm />
 
             <div className='btn'>
+            <button type="button" style={{cursor:"not-allowed" }} className='nextBtn'>Previous</button>
               <button type="button" onClick={nextStep} className='nextBtn'>Next</button>
             </div>
           </div>
@@ -63,9 +42,9 @@ const SampleForm = () => {
       case 2:
         return (
           <div className='formContainer'>
-            <h2>Parent Information</h2>
+            {/* <h2>Parent's Information</h2> */}
             
-            <StudentRegForm />
+            <ParentDetailsForm />
 
             <div className='btn2'>
               <button type="button" onClick={prevStep} className='nextBtn'>Previous</button>
@@ -76,7 +55,7 @@ const SampleForm = () => {
       case 3:
         return (
           <div className='formContainer'>
-            <h2> Health Information</h2>
+            {/* <h2> Health Information</h2> */}
 
             <StudentRegForm />
 
@@ -107,4 +86,16 @@ const SampleForm = () => {
   );
 };
 
-export default SampleForm;
+const RegistrationForm = () => {
+  return (
+    <div className='sidebarOutlet'>
+      <div className='mainContainer'>
+        <div className='mainOutlet'>
+          <SampleForm />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RegistrationForm;

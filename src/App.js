@@ -1,8 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 // import DefaultLayout from './Layout/DefaultLayout';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { routes, studentRoute } from './routes';
-import Student from './View/Student/Student';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {  routes } from './routes';
+import Dashboard from './View/Dashboard/Dashboard';
+import Login from './Pages/Login';
 
 const DefaultLayout = lazy(() => import("./Layout/DefaultLayout"))
 
@@ -11,15 +12,31 @@ function App() {
     <BrowserRouter>
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
+
+          {/* Pages */}
+          <Route path='/login' element={<Login />} />
+        
+        
           <Route path="/" element={<DefaultLayout />}>
+            <Route index element={<Dashboard />} />
             {routes.map((route, index) => (
               <Route key={index} path={route.path} element={<route.element />} />
             ))}
-            <Route path="student/*" element={<Student />}>
+
+            {/* {Student Info} */}
+            {/* <Route path="student/*" element={<Student />}>
+              <Route index element={<RegistrationForm />} />
               {studentRoute.map((route, index) => (
                 <Route key={index} path={route.path} element={<route.element />} />
               ))}
-            </Route>
+            </Route> */}
+
+            {/* {Exam info} */}
+            {/* <Route path="exam/*" element={<Exam />}>
+              {examRoutes.map((route, index) => (
+                <Route key={index} path={route.path} element={<route.element />} />
+              ))}
+            </Route> */}
           </Route>
         </Routes>
       </Suspense>

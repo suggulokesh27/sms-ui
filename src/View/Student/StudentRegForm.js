@@ -1,46 +1,45 @@
 import React, { useState } from "react";
-
-
+import "./StudentRegForm.css"
 
 const StudentRegForm = () => {
 
-    const [formData, setFormData] = useState({
-        firstName: "",
-        middleName:  "",
-        lastName:  "",
-        birthDate:  "",
-        gender:  "",
-        identityProof:  "",
-        nationality:  "",
-        motherTongue:  "",
-        address1:  "",
-        address2:  "",
-        city: "",
-        state: "",
-        country: "",
-        pinCode: "",
-        grade:  "",
-        photo:  "",
-        mobile:  ""
-      })
+  const [file, setFile] = useState();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    birthDate: "",
+    gender: "",
+    identityProof: "",
+    nationality: "",
+    motherTongue: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    country: "",
+    pinCode: "",
+    grade: "",
+    photo: "",
+    mobile: ""
+  })
 
-      const handlerChangeInput = (e) => {
-        const { name, value, files, type } = e.target;
-        let newError = {};
-        if (type === "file") {
-          setFormData({
-            ...formData,
-            [name]: files[0]
-          })
-        }
-        setFormData({
-          ...formData,
-          [name]: value
-        })
-      }
-    
-    return(
-        <div className="container-fluid">
+  const handlerChangeInput = (e) => {
+    const { name, value, files, type } = e.target;
+    let newError = {};
+    if (type === "file") {
+      setFile(URL.createObjectURL(files[0]));
+    }
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  return (
+    <fieldset>
+      <legend>STUDENT'S DETAILS</legend>
+      <div className="container-fluid">
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
           <div className="col">
             <label htmlFor="firstName" className="form-label">First Name<span className="text-danger">*</span></label>
@@ -118,12 +117,17 @@ const StudentRegForm = () => {
             </select>
           </div>
           <div className="col">
+            <img src={file} style={{
+              width: "100px"
+            }} />
             <label htmlFor="photo" className="form-label">Upload The Student Photo</label>
             <input type="file" className="form-control " id="photo" name="photo" onChange={handlerChangeInput} />
           </div>
         </div>
       </div>
-    )
+    </fieldset>
+
+  )
 }
 
 
