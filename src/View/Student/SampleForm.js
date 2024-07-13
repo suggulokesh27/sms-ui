@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './RegistrationForm.css';
 
 import StudentRegForm from './StudentRegForm';
+import ParentDetailsForm from './ParentDetailsForm';
 
 const SampleForm = () => {
   const [step, setStep] = useState(1);
@@ -51,7 +52,7 @@ const SampleForm = () => {
       case 1:
         return (
           <div className='formContainer'>
-            <h2>Student Information</h2>
+            <h2>Student's Information</h2>
 
               <StudentRegForm />
 
@@ -63,9 +64,9 @@ const SampleForm = () => {
       case 2:
         return (
           <div className='formContainer'>
-            <h2>Parent Information</h2>
+            <h2>Parent's Information</h2>
             
-            <StudentRegForm />
+            <ParentDetailsForm />
 
             <div className='btn2'>
               <button type="button" onClick={prevStep} className='nextBtn'>Previous</button>
