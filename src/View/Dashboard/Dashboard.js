@@ -32,8 +32,7 @@ const pieData = [
 
 const Dashboard = () => {
     return (
-        
-        <div>
+        <div className="dashboard-container">
             <div className="header">
                 <div className="header-item">
                     <span>New Wins</span>

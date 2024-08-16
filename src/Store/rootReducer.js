@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import LoginSlice from "./LoginSlice";
 import SidebarToggleSlice from "./SidebarToggleSlice";
-import OrganisationSlice from "./OrganisationSlice";
+
 
 const rootReducer = combineReducers({
-    LoginSlice, SidebarToggleSlice, OrganisationSlice
+    LoginSlice, SidebarToggleSlice
 })
 
 export default rootReducer;

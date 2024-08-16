@@ -1,8 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import './ParentsDetails.css';
 
-const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,addressForm,isParentFormValid}) => {
-  
+const ParentDetailsForm = () => {
+  const [formData, setFormData] = useState({
+    fatherName: "",
+    fatherDOB: "",
+    motherDOB: "",
+    fatherOccupation: "",
+    fatherContact: "",
+    motherName: "",
+    motherOccupation: "",
+    motherContact: "",
+    presentAddress1: "",
+    presentAddress2: "",
+    permanentAddress1: "",
+    permanentAddress2: "",
+    city: "",
+    state: "",
+    country: "",
+    pinCode: "",
+    sameAddress: false // Added for handling same address checkbox
+  });
+
+  const handlerChangeInput = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    setFormData({
+      ...formData,
+      [name]: newValue
+    });
+  };
+
+  const handleSameAddressChange = (e) => {
+    const { checked } = e.target;
+    if (checked) {
+      setFormData({
+        ...formData,
+        permanentAddress1: formData.presentAddress1,
+        permanentAddress2: formData.presentAddress2,
+        city: formData.city,
+        state: formData.state,
+        country: formData.country,
+        pinCode: formData.pinCode,
+        sameAddress: true
+      });
+    } else {
+      setFormData({
+        ...formData,
+        sameAddress: false
+      });
+    }
+  };
+
   return (
     <div>
       <fieldset>
@@ -20,12 +69,11 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.fatherName}
               onChange={handlerChangeInput}
             />
-           {isParentFormValid.fatherName !== null && <p className="error-message">{isParentFormValid.fatherName}</p>}
-           </div>
+          </div>
 
           <div className="col-md-4 mb-3">
-            <label htmlFor="fatherDOB" className="form-label">
-               Date Of Birth
+            <label htmlFor="fatherName" className="form-label">
+               Date Of Birth<span className="text-danger">*</span>
             </label>
             <input
               type="text"
@@ -52,7 +100,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
             />
           </div>
 
-          {/* <div className="col-md-4 mb-3">
+          <div className="col-md-4 mb-3">
             <label htmlFor="fatherContact" className="form-label">
               Contact Number<span className="text-danger">*</span>
             </label>
@@ -64,7 +112,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.fatherContact}
               onChange={handlerChangeInput}
             />
-          </div> */}
+          </div>
 
 
           <div className="col-md-4 mb-3">
@@ -79,10 +127,9 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.fatherAadhar}
               onChange={handlerChangeInput}
             />
-           {isParentFormValid.fatherAadhar !== null && <p className="error-message">{isParentFormValid.fatherAadhar}</p>}
           </div>
 
-          {/* <div className="col-md-4 mb-3">
+          <div className="col-md-4 mb-3">
             <label htmlFor="fatherEmail" className="form-label">
               Email id
             </label>
@@ -94,11 +141,11 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.fatherEmail}
               onChange={handlerChangeInput}
             />
-          </div> */}
+          </div>
 
           <div className="col-md-4 mb-3">
             <label htmlFor="fatherQualification" className="form-label">
-              Qualification
+              Qualification<span className="text-danger">*</span>
             </label>
             <input
               type="tel"
@@ -110,7 +157,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
             />
           </div>
 
-          {/* <div className="col-md-4 mb-3">
+          <div className="col-md-4 mb-3">
             <label htmlFor="fatherIncome" className="form-label">
               Annual Income<span className="text-danger">*</span>
             </label>
@@ -122,7 +169,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.fatherincome}
               onChange={handlerChangeInput}
             />
-          </div> */}
+          </div>
 
 
         </div>
@@ -143,12 +190,11 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.motherName}
               onChange={handlerChangeInput}
             />
-           {isParentFormValid.motherName !== null && <p className="error-message">{isParentFormValid.motherName}</p>}
           </div>
 
           <div className="col-md-4 mb-3">
             <label htmlFor="motherDOB" className="form-label">
-               Date Of Birth
+               Date Of Birth<span className="text-danger">*</span>
             </label>
             <input
               type="text"
@@ -173,7 +219,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               onChange={handlerChangeInput}
             />
           </div>
-          {/* <div className="col-md-4 mb-3">
+          <div className="col-md-4 mb-3">
             <label htmlFor="motherContact" className="form-label">
               Contact Number<span className="text-danger">*</span>
             </label>
@@ -185,7 +231,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.motherContact}
               onChange={handlerChangeInput}
             />
-          </div> */}
+          </div>
 
           <div className="col-md-4 mb-3">
             <label htmlFor="motherAadhar" className="form-label">
@@ -196,13 +242,12 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               className="form-control"
               id="motherAadhar"
               name="motherAadhar"
-              value={formData.motherAadhar}
+              value={formData.fatherAadhar}
               onChange={handlerChangeInput}
             />
-           {isParentFormValid.motherAadhar !== null && <p className="error-message">{isParentFormValid.motherAadhar}</p>}
           </div>
 
-          {/* <div className="col-md-4 mb-3">
+          <div className="col-md-4 mb-3">
             <label htmlFor="motherEmail" className="form-label">
               Email id
             </label>
@@ -214,11 +259,11 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.motherEmail}
               onChange={handlerChangeInput}
             />
-          </div> */}
+          </div>
 
           <div className="col-md-4 mb-3">
             <label htmlFor="motherQualification" className="form-label">
-              Qualification
+              Qualification<span className="text-danger">*</span>
             </label>
             <input
               type="tel"
@@ -230,7 +275,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
             />
           </div>
 
-          {/* <div className="col-md-4 mb-3">
+          <div className="col-md-4 mb-3">
             <label htmlFor="motherIncome" className="form-label">
               Annual Income<span className="text-danger">*</span>
             </label>
@@ -242,7 +287,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
               value={formData.motherincome}
               onChange={handlerChangeInput}
             />
-          </div> */}
+          </div>
 
         </div>
       </fieldset>
@@ -261,8 +306,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 className="form-control"
                 id="presentAddress1"
                 name="presentAddress1"
-                value={addressForm.presentAddress1}
-                onChange={handleSameAddressChange}
+                value={formData.presentAddress1}
+                onChange={handlerChangeInput}
               />
             </div>
             <div className="col-md-6 mb-3">
@@ -274,8 +319,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 className="form-control"
                 id="presentAddress2"
                 name="presentAddress2"
-                value={addressForm.presentAddress2}
-                onChange={handleSameAddressChange}
+                value={formData.presentAddress2}
+                onChange={handlerChangeInput}
               />
             </div>
             <div className="col-md-4 mb-3">
@@ -287,8 +332,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 className="form-control"
                 id="city"
                 name="city"
-                value={addressForm.city}
-                onChange={handleSameAddressChange}
+                value={formData.city}
+                onChange={handlerChangeInput}
               />
             </div>
             <div className="col-md-4 mb-3">
@@ -300,8 +345,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 className="form-control"
                 id="state"
                 name="state"
-                value={addressForm.state}
-                onChange={handleSameAddressChange}
+                value={formData.state}
+                onChange={handlerChangeInput}
               />
             </div>
             <div className="col-md-4 mb-3">
@@ -313,8 +358,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 className="form-control"
                 id="country"
                 name="country"
-                value={addressForm.country}
-                onChange={handleSameAddressChange}
+                value={formData.country}
+                onChange={handlerChangeInput}
               />
             </div>
             <div className="col-md-4 mb-3">
@@ -326,8 +371,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 className="form-control"
                 id="pinCode"
                 name="pinCode"
-                value={addressForm.pinCode}
-                onChange={handleSameAddressChange}
+                value={formData.pinCode}
+                onChange={handlerChangeInput}
               />
             </div>
 
@@ -340,8 +385,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 className="form-control"
                 id="contactNumber"
                 name="contactNumber"
-                value={addressForm.contactNumber}
-                onChange={handleSameAddressChange}
+                value={formData.contactNumber}
+                onChange={handlerChangeInput}
               />
             </div>
 
@@ -377,8 +422,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
             type="checkbox"
             id="sameAddress"
             name="sameAddress"
-            checked={addressForm.sameAddress}
-            value={addressForm.sameAddress}
+            checked={formData.sameAddress}
             onChange={handleSameAddressChange}
           />
           <label className="form-check-label" htmlFor="sameAddress">
@@ -386,7 +430,7 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
           </label>
         </div>
 
-       
+        {!formData.sameAddress && (
           <fieldset>
             <legend>Permanent Address</legend>
             <div className="row mb-4">
@@ -399,8 +443,8 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                   className="form-control"
                   id="permanentAddress1"
                   name="permanentAddress1"
-                  value={addressForm.sameAddress ? addressForm.presentAddress1 : addressForm.permanentAddress1}
-                  onChange={handleSameAddressChange}
+                  value={formData.permanentAddress1}
+                  onChange={handlerChangeInput}
                 />
               </div>
               <div className="col-md-6 mb-3">
@@ -412,34 +456,34 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                   className="form-control"
                   id="permanentAddress2"
                   name="permanentAddress2"
-                  value={addressForm.sameAddress ? addressForm.presentAddress2 : addressForm.permanentAddress2}
-                  onChange={handleSameAddressChange}
+                  value={formData.permanentAddress2}
+                  onChange={handlerChangeInput}
                 />
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="permanentCity" className="form-label">
+                <label htmlFor="city" className="form-label">
                   City<span className="text-danger">*</span>
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="permanentCity"
-                  name="permanentCity"
-                  value={addressForm.sameAddress ? addressForm.city : addressForm.permanentCity}
-                  onChange={handleSameAddressChange}
+                  id="city"
+                  name="city"
+                  value={formData.city}
+                  onChange={handlerChangeInput}
                 />
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="permanentState" className="form-label">
+                <label htmlFor="state" className="form-label">
                   State<span className="text-danger">*</span>
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="permanentState"
-                  name="permanentState"
-                  value={addressForm.sameAddress ? addressForm.state : addressForm.permanentState}
-                  onChange={handleSameAddressChange}
+                  id="state"
+                  name="state"
+                  value={formData.state}
+                  onChange={handlerChangeInput}
                 />
               </div>
               <div className="col-md-4 mb-3">
@@ -449,85 +493,31 @@ const ParentDetailsForm = ({handlerChangeInput,handleSameAddressChange,formData,
                 <input
                   type="text"
                   className="form-control"
-                  id="permanentCountry"
-                  name="permanentCountry"
-                  value={addressForm.sameAddress ? addressForm.country : addressForm.permanentCountry}
-                  onChange={handleSameAddressChange}
+                  id="country"
+                  name="country"
+                  value={formData.country}
+                  onChange={handlerChangeInput}
                 />
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="permanentPinCode" className="form-label">
+                <label htmlFor="pinCode" className="form-label">
                   Pin Code<span className="text-danger">*</span>
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="permanentPinCode"
-                  name="permanentPinCode"
-                  value={addressForm.sameAddress ? addressForm.pinCode : addressForm.permanentPinCode}
-                  onChange={handleSameAddressChange}
+                  id="pinCode"
+                  name="pinCode"
+                  value={formData.pinCode}
+                  onChange={handlerChangeInput}
                 />
               </div>
             </div>
           </fieldset>
-        
+        )}
       </fieldset>
     </div>  
   );
 };
 
 export default ParentDetailsForm;
-
-
-
-
-// const [addressForm, setFormData] = useState({
-  //   fatherName: "",
-  //   fatherDOB: "",
-  //   motherDOB: "",
-  //   fatherOccupation: "",
-  //   fatherContact: "",
-  //   motherName: "",
-  //   motherOccupation: "",
-  //   motherContact: "",
-  //   presentAddress1: "",
-  //   presentAddress2: "",
-  //   permanentAddress1: "",
-  //   permanentAddress2: "",
-  //   city: "",
-  //   state: "",
-  //   country: "",
-  //   pinCode: "",
-  //   sameAddress: false // Added for handling same address checkbox
-  // });
-
-  //  handleSameAddressChange = (e) => {
-  //   const { name, value, type, checked } = e.target;
-  //   const newValue = type === "checkbox" ? checked : value;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: newValue
-  //   });
-
-  // };
-
-  // const handleSameAddressChange = (e) => {
-  //   const { checked } = e.target;
-  //   if (checked) {
-  //     setFormData({
-  //       ...formData,
-  //       permanentAddress1: formData.presentAddress1,
-  //       permanentAddress2: formData.presentAddress2,
-  //       city: formData.city,
-  //       state: formData.state,
-  //       country: formData.country,
-  //       pinCode: formData.pinCode,
-  //       sameAddress: true
-  //     });
-  //   } else {
-  //     setFormData({
-  //       ...formData,
-  //       sameAddress: false
-  //     });
-  //   }
-  // };

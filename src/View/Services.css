@@ -1,0 +1,113 @@
+.comparison {
+    max-width: 90%;
+    max-height: 450px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    font: 13px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .comparison h5{
+    margin: 20px 0 30px;
+    font-family: math;
+  }
+  
+  .comparison table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: auto;
+    overflow: auto;
+  }
+  
+  .comparison td,
+  .comparison th {
+    border-right: 1px solid #E8E8E8;
+    empty-cells: show;
+    padding: 10px;
+    border-top: 1px solid #E8E8E8;
+    border-bottom: 1px solid #E8E8E8;
+    font-size: 15px;
+    width: 20px;
+  }
+  
+  .comparison .compare-row {
+    background: #F7F7F7;
+  }
+  
+  .comparison th {
+    font-weight: normal;
+    padding: 15px;
+    background: #69C7F1;
+    color: #ff2a58;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .comparison .left-column {
+    text-align: left;
+    padding: 15px;
+    background: #69C7F1;
+    color: #FFF;
+    border-left: 1px solid #E8E8E8;
+    text-transform: capitalize;
+    max-width: 80px;
+  }
+  
+  .permission-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+  
+
+
+
+  .add-service {
+    text-align: center;
+  }
+
+  .add-service h5{
+    margin-top: 30px; 
+    margin-bottom: 20px;
+    font-family: math;
+    text-align: center;
+  }
+  
+  .add-service input {
+    padding: 8px;
+    font-size: 14px;
+    margin-right: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .add-service button {
+    padding: 8px 20px;
+    font-size: 14px;
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .add-service button:hover {
+    background-color: #005bb5;
+    position: sticky;
+    left: 1px;
+  }
+  
+
+  @media (max-width: 800px) {
+    .comparison{
+      height: 400px;
+    }
+    .comparison h5, .add-service{
+      position: sticky;
+      left: 0;
+    }
+  }

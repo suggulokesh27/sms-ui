@@ -1,17 +1,16 @@
-.sidebar-details {
-    /* max-width: 250px; */
-    height: 88vh;
-    background-color: white;
-    border-right: 1px solid grey;
-}
-
-.sidedetails-ul {
+.sidedetails-ul{
+    width: 350px;
+    height: 90vh;
+    background-color: #b7b5b5;
+    list-style-type: none;
+    padding-top: 10px;
     padding-left: 0;
-    padding-top: 15px;
-    width: 250px;
+    overflow: auto;
+    border-right: 1px solid grey;
+   
 }
 
-.sidedetails-ul li {
+.sidedetails-ul li{
     margin: 5px auto;
     width: 96%;
     height: 43px;
@@ -25,13 +24,13 @@
     justify-content: space-between;
     align-items: center;
 
-    .icon {
+    .icon{
         font-size: 1.2rem;
     }
 }
 
-.sidedetails-ul a {
-    margin-top: 5px;
+.sidedetails-ul a{
+    margin: 5px auto;
     width: 80%;
     height: 42px;
     padding: 10px;
@@ -46,39 +45,58 @@
     justify-content: space-between;
     align-items: center;
 
-    .icon {
+    .icon{
         font-size: 1.2rem;
     }
 }
 
-@media (max-width:950px) {
-    .sidebar-details {
-        position: absolute;
-        width: 86vw;
-        height: 86vh;
-        left: 100px;
-        background-color: rgba(175, 175, 175, 0.601);
-        z-index: 1;
-    }
-    .sidedetails-ul{
-        padding-top: 15px;
-        width: 250px;
+.manualServices{
+    margin-top: 15px;
+}
+
+.manualForm{
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    margin: 10px auto ;
+    position: relative;
+    left: -10px;
+    input{
         height: 100%;
-        background-color: white;
-        border-right: 1px solid grey;
+        width: 76%;
+        border-radius: 10px;
+        outline: none;
+        border: 1.5px solid blue;
+        padding: 2px 8px;
     }
 }
 
-@media (max-width:500px) {
-    .sidebar-details {
-        width: 200px;
-    }
 
-    .sidedetails-ul {
-        width: 200px;
-    }
+.manualForm button{
+    position: absolute;
+    right: 3px;
+    border: none;
+    outline: none;
+    padding: 8px 11px;
+    border-radius: 5px;
+    background-color: rgba(147, 143, 143, 0.903);
+    z-index: 50;
+    transition: 250ms;
+}
 
-    .sidedetails-ul li {
-        font-size: 14px;
+.manualForm button:hover{
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.688);
+    color: white;
+}
+
+@media (max-width:800px){
+    .sidedetails-ul{
+        position: absolute;
+        width: 260px;
+        left: 100px;
+        background-color: rgba(83, 83, 83, 0.601);
+        z-index: 50;
     }
 }
+

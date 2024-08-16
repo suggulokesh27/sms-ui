@@ -1,60 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ContentSidebar.css";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import {useMediaQuery} from "react-responsive";
-import { useDispatch } from "react-redux";
-import { toggleContentSideBar, toggleSideBar } from "../Store/SidebarToggleSlice";
 
 const ContentSideBar = ({navItems}) => {
-
+  
   const [showItem, setShowItem] = useState(null);
-  const isTablet = useMediaQuery({maxWidth:950});
-  const isMobile = useMediaQuery({minWidth:350})
-
-  const dispatch = useDispatch();
+  const [manualInputValue,setManualInputValue] = useState(null);
+  const [manualInputData, setManualInputData] = useState(["Student"]);
 
   const showHandler = (index) => {
+    console.log("contehhhh",index)
     setShowItem(index === showItem ? null : index);
   };
 
-
-  
-  const hideContentBar = () => {
-    if(isTablet && isMobile){
-      dispatch(toggleContentSideBar(false))
-      dispatch(toggleSideBar(false))
-    }
-    if(isTablet){
-      dispatch(toggleContentSideBar(false))
-    }
+  const handleManualInput = (e) => {
+    e.preventDefault();
+    setManualInputData(preData => [...preData,manualInputValue]);
+    setManualInputValue("");
   }
 
-  const hideSideBarRef = useRef(null);
-
-  // const handleClickOutside = (event) => {
-  //     // console.log("outer side", hideSideBarRef)
-  //     if (hideSideBarRef.current && !hideSideBarRef.current.contains(event.target)) {
-  //         // console.log("inside", hideSideBarRef.current)
-  //     dispatch(toggleContentSideBar(false))
-  //     // console.log("inside 2", event.target)
-  //   }
-  // };
-
-
-  // useEffect(() => {
-  //   document.addEventListener('mousedown', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, []);
-
-
   return (
-    <div className="sidebar-details"
-    role="button"
-    // ref={hideSideBarRef}
-    >
     <ul className="sidedetails-ul">
       {navItems?.map((item, index) => (
         <div key={index}>
@@ -64,7 +30,7 @@ const ContentSideBar = ({navItems}) => {
           {showItem === index && item.items && (
             <ul>
               {item.items.map((subItem, subIndex) => (
-                  <Link key={subIndex} to={subItem.to} onClick={hideContentBar}>
+                  <Link key={subIndex} to={subItem.to}>
                   {subItem.name}
                   </Link>
               ))}
@@ -72,8 +38,12 @@ const ContentSideBar = ({navItems}) => {
           )}
         </div>
       ))}
+
+        <ul>
+        <li><Link to={"services"}>Default Services</Link></li>
+        <li><Link to={"manualservices"}>Manual Services</Link></li>
+        </ul>
     </ul>
-    </div>
   );
 };
 
@@ -81,29 +51,25 @@ export default ContentSideBar;
 
 
 
+{/* <div className="serviceContainer">
+        <h4 className="text-center mb-3">User Types</h4>
+        <div className="defaultServices"> 
+          <li> Default Services  <FaPlus /></li>
+          <ul>
+            <li>student</li>
+            <li>Teacher</li>
+          </ul>
+        </div>
+        <div className="manualServices">
+          <li> Enter Manually<FaPlus /></li>
+              <ul>
+                <form className="manualForm" onSubmit={handleManualInput}> 
+                  <input type="text" placeholder="Add Service Type" required value={manualInputValue} onChange={(e) => setManualInputValue(e.target.value)} />
+                  <button type="submit">Add</button>
+                </form>
 
-
-// const NavLink = ({ item }) => {
-//   const { name, to } = item;
-//   return (
-//     <li>
-//       <Link to={to}>
-//         {name}
-//       </Link>
-//     </li>
-//   );
-// };
-
-// const NavItemFun = ({ items }) => {
-//   return (
-//     <ul>
-//       {items.map((item, index) => (
-//         <li key={index}>
-//           {item.name}
-//           {item.items && <NavItemFun items={item.items} />}
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };
+                {manualInputData.map((data,index) => (<li key={index}>{data}</li>))}
+              </ul>
+        </div>
+      </div> */}
 

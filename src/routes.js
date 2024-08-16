@@ -10,6 +10,11 @@ const StudentView = React.lazy(() => import("./View/Student/StudentView"));
 //Exam
 const ExamRecords = React.lazy(()=>import("./View/Exam/ExamRecords"));
 
+//Services 
+const Services = React.lazy(() => import('./View/Services'));
+
+const ManualServices = React.lazy(() => import('./View/ManualServices'));
+
 //ContentBar route
 export const routes = [
     {
@@ -27,4 +32,13 @@ export const routes = [
         path : "exam/records",
         element : ExamRecords
     },
+    {
+        name : "Services",
+        path : "services",
+        element : Services
+    },{
+        name : "ManualServices",
+        path : "manualservices",
+        element : ManualServices
+    }
 ]

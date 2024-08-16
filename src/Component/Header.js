@@ -1,24 +1,22 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleContentSideBar, toggleSideBar } from "../Store/SidebarToggleSlice";
 import "./Header.css";
 import { HiMiniSquares2X2 } from "react-icons/hi2";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { FaRegBell } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import getApi from "../Api/getApi";
-import { setOrg } from "../Store/OrganisationSlice";
+
+import { GiTireIronCross } from "react-icons/gi";
+
 
 const Header = () => {
     const [showProfile, setShowProfile] = useState(false);
-    const showProfileRef = useRef();
+    const [showNotification, setShowNotification] = useState(false);
     const sideBar = useSelector((state) => state.SidebarToggleSlice.sideBar);
     const contentSideBar = useSelector((state) => state.SidebarToggleSlice.contentSideBar);
-    const organisationData = useSelector(state => state.OrganisationSlice.organisationData)
     const dispatch = useDispatch();
-
-    const navigate = useNavigate();
 
     const isMobile = useMediaQuery({ maxWidth: 767 });
     const isDesktop = useMediaQuery({ minWidth: 768 });
@@ -36,61 +34,25 @@ const Header = () => {
 
     const showProfileHandler = useCallback(() => {
         setShowProfile((prev) => !prev);
+        setShowNotification(false);
     }, []);
 
-    const handleClickOutside = (event) => {
-        // console.log("event",showProfileRef)
-        if (showProfileRef.current && !showProfileRef.current.contains(event.target)) {
-            setShowProfile(false);
-        }
-      };
-
-      const logoutHandler = () => {
-        localStorage.clear();
-        navigate("/")
-      }
-
-      const tokenFormLocalStorage = localStorage.getItem("token")
-      const orgId = localStorage.getItem("orgId")
-      useEffect(() => {
-
-          const headers = {
-              'Authorization': `Bearer ${tokenFormLocalStorage}`
-          }
-          try {
-              const fetchData = async () => {
-                  const res = await getApi(`org/get/${orgId}`, headers, 8084);
-                  dispatch(setOrg(res.data))
-              }
-              fetchData();
-
-          } catch (err) {
-              console.log(err)
-          }
-
-    console.log(organisationData)
-
-      }, [orgId])
-    
-      useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
-        };
-      }, []);
+    const showNotificationHandler = useCallback(() => {
+        setShowProfile(false);
+        setShowNotification((prev) => !prev);
+    }, []);
 
     return (
         <div className='navbar'>
             <div className='left'>
-            <Link to="/dashboard">
-            <img
-                    alt='logo'
-                    id='logo'
-                    width={50}
-                    src='https://png.pngtree.com/png-clipart/20211017/original/pngtree-school-logo-png-image_6851480.png'
-                />
-            </Link>
-                
+                <Link to={"/"}>
+                    <img
+                        alt='logo'
+                        id='logo'
+                        width={50}
+                        src='https://png.pngtree.com/png-clipart/20211017/original/pngtree-school-logo-png-image_6851480.png'
+                    />
+                </Link>
                 <div
                     role="button"
                     tabIndex={0}
@@ -102,27 +64,26 @@ const Header = () => {
             </div>
 
             <div className='right'>
-                <button>{organisationData?.displayName}</button>
+                <button>Code-Branch-Name</button>
                 {isDesktop && (
                     <>
                         <div className='navbar-icons'><HiMiniSquares2X2 /></div>
                         <div className='navbar-icons'><AiOutlineArrowsAlt /></div>
-                        <div className='navbar-icons'><FaRegBell /></div>
+                        <div className='navbar-icons notification' onClick={showNotificationHandler}><FaRegBell />  <span className="notification-count">10</span></div>
                     </>
                 )}
 
                 <div
                     className='navbar-avatar'
-                    onClick={showProfileHandler}
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) => e.key === 'Enter' && showProfileHandler()}
-                    ref={showProfileRef}
                 >
                     <img
                         src='https://cdn-icons-png.freepik.com/512/145/145974.png'
                         width={25}
                         alt='avatar'
+                        onClick={showProfileHandler}
                     />
                     <div className={`sub-menu-wrap ${showProfile ? 'active' : ''}`}>
                         <div className={`sub-menu ${showProfile ? 'active' : ''}`}>
@@ -140,8 +101,8 @@ const Header = () => {
                                     <div className="navbar-icons-mobile">
                                         <div className='navbar-icons'><HiMiniSquares2X2 /></div>
                                         <div className='navbar-icons'><AiOutlineArrowsAlt /></div>
-                                        <div className='navbar-icons'><FaRegBell /></div>
-                                    </div>
+                                        <div className='navbar-icons notification' onClick={showNotificationHandler}><FaRegBell />  <span className="notification-count">10</span></div>
+                                        </div>
                                     <hr />
                                 </>
                             )}
@@ -151,11 +112,31 @@ const Header = () => {
                             <Link className="sub-menu-link">
                                 <p>Account & Info</p>
                             </Link>
-                            <Link to="/" onClick={logoutHandler} className="sub-menu-link">
+                            <Link className="sub-menu-link">
                                 <p>Log Out</p>
                             </Link>
                         </div>
                     </div>
+
+
+
+                    <div className={`sub-menu-wrap  ${showNotification ? 'active' : ''}`}>
+                        <div className={`sub-menu notification-wapper ${showNotification ? 'active' : ''}`}>
+
+                            <ul class="list-group ">
+                                <li class="list-group-item">Cras justo odio Dapibus ac facilisis in   <span><GiTireIronCross /></span>  </li>
+                                <li class="list-group-item">Dapibus ac facilisis in  <span><GiTireIronCross /></span> </li>
+                                <li class="list-group-item">Vestibulum at eros  <span><GiTireIronCross /></span> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                
+
+
+
+
+                    
                 </div>
             </div>
         </div>
