@@ -38,11 +38,7 @@ const Student = () => {
       width: "100%",
       height: "100%"
     }}>      
-      <div className="student-container">
-        <div className="body">
-         <Outlet />
-        </div>
-      </div>
+      <Outlet />
     </div>
   )
 }

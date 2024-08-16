@@ -14,10 +14,12 @@ function App() {
         <Routes>
 
           {/* Pages */}
+          <Route path='/'  redirect= "/login" element={<Login />} />
+
           <Route path='/login' element={<Login />} />
         
         
-          <Route path="/" element={<DefaultLayout />}>
+          <Route path="/dashboard" element={<DefaultLayout />}>
             <Route index element={<Dashboard />} />
             {routes.map((route, index) => (
               <Route key={index} path={route.path} element={<route.element />} />

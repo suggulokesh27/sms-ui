@@ -1,67 +1,74 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "../Component/Header";
 import SideBar from "../Component/SideBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 // import Dashboard from "../View/Dashboard/Dashboard";
 import ContentSideBar from "../Component/ContentSideBar";
 import "../View/Student/Student.css"
-
-// const navItems = [
-//     {
-//         name: 'Students Information',
-//         icon: "icons",
-//         items: [
-//             { name: "add", to: "add" },
-//             { name: "view", to: "view" },
-//             { name: "update", to: "update" }
-//         ]
-//     },
-//     {
-//         name: 'Record',
-//         icon: "icons",
-//         to: "/record"
-//     },
-//     {
-//         name: 'Attendance',
-//         icon: "icons",
-//         to: "/attendance"
-//     }
-// ];
-
+import Footer from "../Component/Footer";
+import "./DefaultLayout.css"
+import { toggleContentSideBar, toggleSideBar } from "../Store/SidebarToggleSlice";
+const navItems = [
+    {
+        name: 'Students Information',
+        icon: "icons",
+        items: [
+            { name: "add", to: "add" },
+            { name: "view", to: "view" },
+            { name: "update", to: "update" }
+        ]
+    },
+    {
+        name: 'Record',
+        icon: "icons",
+        to: "/record"
+    },
+    {
+        name: 'Attendance',
+        icon: "icons",
+        to: "/attendance"
+    }
+];
 const DefaultLayout = () => {
-
     const sideBar = useSelector(state => state.SidebarToggleSlice.sideBar);
     const contentSideBar = useSelector(state => state.SidebarToggleSlice.contentSideBar);
     const contentSidebarItems = useSelector(state => state.SidebarToggleSlice.items);
-
+  
+   
     return (
-        <>
-            <Header />
-            <div className="d-flex flex-row sidebarOutlet">
+      <div>
+        <Header />
+        <div className="flex-layout">
+          <div className="flex-layout">
+            {sideBar && <SideBar />}
+            {sideBar && contentSideBar && <ContentSideBar navItems={contentSidebarItems} />}
+          </div>
+          <div className="layout-outer" >
+            <div className="layout-inner hide-scrollbar">
+              <Outlet />
+              <Footer />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+export default DefaultLayout;
+
+{/* <div className="d-flex flex-row sidebarOutlet">
                 {
                     sideBar && <SideBar />
                 }
                 {sideBar && contentSideBar && <ContentSideBar navItems={contentSidebarItems} />}
-                <div className="d-flex flew-row" style={{
-                    width: "100%",
-                    height: "100%"
-                }}>
-                    <div className="student-container">
-                        <div className="body">
-                            <Outlet />
-                        </div>
+                <div className="layout-outer">
+                    <div className="layout-inner hide-scrollbar">
+                        <Outlet />
+                        <Footer />
                     </div>
                 </div>
-            </div>
-
-        </>
-    )
-}
-
-export default DefaultLayout;
-
-
+            </div> */}
 
 
 // <>

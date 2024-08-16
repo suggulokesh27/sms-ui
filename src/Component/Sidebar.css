@@ -5,7 +5,7 @@
 
 .sidebar{
     max-width: 100px;
-    height: 90vh;
+    height: 88vh;
     padding: 0 20px;
     border-right: 1px solid rgb(161, 161, 162);
     overflow: scroll;
@@ -34,4 +34,26 @@
 }
 .sidebar-icons p {
     font-size: small;
+}
+
+.hide-scrollbar {
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+
+@media (max-width:500px) {
+    .sidebar-container {
+        position: absolute;
+        width: 82vw;
+        height: 88vh;
+        background-color: rgba(175, 175, 175, 0.601);
+        z-index: 1;
+    }
+    
 }

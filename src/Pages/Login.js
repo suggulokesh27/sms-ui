@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import postApi from "../Api/postApi";
+import { useDispatch } from "react-redux";
+import { setUserType, setToken } from "../Store/LoginSlice";
 
 
 
 const Login = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [userName,setUserName] = useState("");
-  const [password,setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   const userNameChangedHandler = (e) => {
     setUserName(e.target.value);
@@ -19,35 +23,56 @@ const Login = () => {
 
   const loginSubmitHandler = (e) => {
     e.preventDefault();
-    const login = async() => {
-        const fetchData = await fetch("http://localhost:8083/api/v1/user/login",{
-          method:"POST",
-          body : JSON.stringify({
-            userName,
-            password
-          }),
-          headers : {
-            "Content-Type": "application/json",
-          }
-        })
-        .then(res => console.log(res.data))
+    const login = async () => {
+
+      const header = {
+        "Content-Type": "application/json",
+      }
+      try {
+        const response = await postApi("v1/user/login", header, { userName, password }, 8083)
+
+        const token = response.data.token;
+        const userType = response.data.user.userType;
+        const orgId = response.data.user.orgId;
+        const expirationTime = new Date().getTime() + (60 * 60 * 1000);
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('tokenExpiration', expirationTime);
+        localStorage.setItem('usertype', userType);
+        localStorage.setItem('orgId', orgId);
+
+        console.log('Token stored in localStorage');
+
+        if (token && userType) {
+          dispatch(setToken(token));
+          navigate("/dashboard")
+        } else {
+          console.log("token and status is not generated");
+          navigate("/")
+        }
+
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error logging in:", error);
+      }
     }
-login();
-  }
+
+    login();
+  };
 
   return (
     <form className="p-4"
-    onSubmit={loginSubmitHandler}
-    style={{
-      display:"flex",
-      justifyContent:"center",
-      alignItems:"center"
-    }}>
+      onSubmit={loginSubmitHandler}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}>
       <div>
         {/* Email input */}
         <div className="form-outline mb-4">
           <input type="email"
-           id="form1Example1"
+            id="form1Example1"
             className="form-control"
             onChange={userNameChangedHandler}
             value={userName} />
@@ -57,10 +82,10 @@ login();
         {/* Password input */}
         <div className="form-outline mb-4">
           <input type="password"
-           id="form1Example2"
+            id="form1Example2"
             className="form-control"
-            onChange={passwordChangedHandler} 
-            value={password}/>
+            onChange={passwordChangedHandler}
+            value={password} />
           <label className="form-label" htmlFor="form1Example2">Password</label>
         </div>
 

@@ -1,19 +1,136 @@
-.dashboard{
-    width: 100%;
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-    padding-top: 30px;
+
+/* Dashboard.css */
+
+.dashboard-container {  
+  padding: 10px 10px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  /* margin: auto; */
+   background-color: white;
+  padding: 15px;
+  box-shadow: 0px 5px 5px rgb(76, 76, 76);
+  border-radius: 5px;
 }
 
-.dashboard-card{
-    background-color: white;
-    padding: 10px;
-    border: 1px solid rgb(80, 77, 77);
-    width: 75%;
-    height: 30%;
-    display: flex;
-    align-items: center;
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+ 
+}
+
+.header-item {
+  width: 250px;
+  height: 200px;
+  padding: 10px;
+  margin: 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 4px 5px 23px 0px rgba(0, 0, 0, 0.1)
+}
+
+.header-item span {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: rgb(5, 5, 5);
+}
+
+.header-item section{
+  span{
+    display: block;
+  }
+  padding: 10px 0;
+  text-align: center;
+  display: block;
+}
+
+.header-item .value {
+  font-size: 2.5em;
+}
+
+.header-item .Incvalue {
+  font-size: 1.5em;
+  color: #02b302;
+  position: relative;
+  top: -10px;
+  font-family: monospace;
+}
+
+.header-item .Incvalue::before{
+  content: "\2191";
+  padding-right: 2px;
+  font-size: 1.1em;
+
+}
+
+.header-item .Incvalue::after{
+  content: "%";
+  padding-left: 2px;
+}
+
+.header-item .text {
+  font-size: .5em;
+  position: relative;
+  top: -10px;
+}
+
+
+.chart-container{
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  /* padding-bottom: 20px; */
+}
+
+.chart-box{
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.donut-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-title {
+  text-align: center;
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 10px;
+}
+
+@media (max-width: 700px){
+
+  .header {
     justify-content: center;
-    border-radius: 3px;
+    align-items: center;
+
+    background-color: #02b302;
+  }
+
+  .chart-container{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chart-box{
+    padding: 5px;
+    width: 100%;
+    margin: 5px;
+  }
 }
