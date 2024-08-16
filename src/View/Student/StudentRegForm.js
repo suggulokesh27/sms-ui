@@ -117,15 +117,15 @@ const StudentRegForm = () => {
             </select>
           </div>
           <div className="col">
-            <img src={file} style={{
-              width: "100px"
-            }} />
-            <label htmlFor="photo" className="form-label">Upload The Student Photo</label>
-            <input type="file" className="form-control " id="photo" name="photo" onChange={handlerChangeInput} />
+              <label htmlFor="photo" className="form-label">Photo <span className="text-danger">*</span></label>
+              <img
+              <button type="button" className="form-control" style={{height:"38px"}} onClick={photoModelShow}>
+                <span><FaImage /> </span>{photoName ? photoName : "Upload Photo"}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </fieldset>
+      </fieldset>
 
   )
 }
