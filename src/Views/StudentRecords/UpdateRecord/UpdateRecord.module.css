@@ -1,0 +1,141 @@
+.updateRecordContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+.suggestionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.suggestionItem {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.suggestionItem:hover {
+  background-color: #f0f0f0;
+}
+
+.searchButton, .updateButton {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover, .updateButton:hover {
+  background-color: #0056b3;
+}
+
+.subTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .updateRecordContainer {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subTitle {
+    font-size: 18px;
+  }
+
+  .input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .searchButton, .updateButton {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .subTitle {
+    font-size: 16px;
+  }
+
+  .input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .searchButton, .updateButton {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

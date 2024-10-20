@@ -1,0 +1,24 @@
+.sidebarWraper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 24vw;
+    background-color: #c8c8c8;
+}
+
+.mainContent {
+    flex-grow: 5;
+    width: auto;
+    background-color: #0080942d;
+    height: 90vh;
+    overflow: auto;
+    padding: 15px;
+}
+
+
+

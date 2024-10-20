@@ -1,0 +1,87 @@
+.SidebarContent {
+    height: 100%;
+    width: 18vw;
+    list-style-type: none;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    border-right: 1px solid grey;
+    transition: 1s ease, opacity 1s ease;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.SidebarContent .hide {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.SidebarContent li {
+    position: relative;
+    left: -15px;
+    margin: 5px auto;
+    width: 15vw;
+    height: 43px;
+    padding: 15px;
+    font-size: 17px;
+    color: white;
+    text-transform: capitalize;
+    background-color: rgb(10, 74, 255);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.SidebarContent li:hover {
+    background-color: rgb(15, 99, 255);
+}
+
+.sublist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sublist li {
+    width: 12vw;
+    text-transform: capitalize;
+    background-color: rgb(10, 74, 255);
+    border-radius: 10px;
+    display: block;
+    padding: 12px;
+    transition: background-color 0.3s ease;
+
+    a{
+        color: white;
+        text-decoration: none;
+        display: block;
+    }
+}
+
+.sublist li:hover {
+    background-color: rgb(15, 99, 255);
+}
+
+
+@media (max-width: 900px) {
+    .SidebarContent {
+        height: 90vh;
+        position: absolute;
+        left: 100px;
+        background-color: rgb(185, 185, 185);
+        width: 280px;
+        z-index: 50;
+    }
+
+    .SidebarContent li {
+        width: 250px;
+    }
+
+    .sublist li {
+        width: 180px;
+    }
+}

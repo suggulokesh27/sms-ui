@@ -1,0 +1,197 @@
+/* App.module.css */
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerHeader {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.tableContainer {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+.header {
+    color: #333;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+.select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+}
+
+.button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 150px;
+    text-align: center;
+}
+
+.submitButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.submitButton:hover {
+    background-color: #218838;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #c82333;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.th, .td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.th {
+    background-color: #007bff;
+    color: rgb(90, 90, 90);
+    font-weight: bold;
+}
+
+.studentName {
+    background-color: white;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.attendedCol {
+    background-color: #28a745;
+    color: white;
+    position: sticky;
+    right: 0;
+    z-index: 1;
+}
+
+.daysInMonth {
+    text-align: center;
+}
+
+.days {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.tableHead {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .form {
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .select, .button {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .table {
+        font-size: 0.85rem;
+    }
+
+    .th, .td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        font-size: 1.8rem;
+    }
+
+    .form {
+        gap: 10px;
+    }
+
+    .table {
+        font-size: 0.8rem;
+    }
+
+    .th, .td {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .select {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .button {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+    }
+}

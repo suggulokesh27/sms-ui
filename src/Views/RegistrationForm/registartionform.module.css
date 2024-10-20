@@ -1,0 +1,132 @@
+.form { 
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .multiSteps > li.isActive:before,
+  .multiSteps > li.isActive ~ li:before {
+    content: counter(stepNum);
+    font-family: inherit;
+    font-weight: 700;
+  }
+  
+  .multiSteps > li.isActive:after,
+  .multiSteps > li.isActive ~ li:after {
+    background-color: #bdb8b8;
+  }
+  
+  .multiSteps {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    margin-top: 25px;
+  }
+  
+  .multiSteps > li {
+    counter-increment: stepNum;
+    text-align: center;
+    display: table-cell;
+    position: relative;
+    color: tomato;
+  }
+  
+  .multiSteps > li:before {
+    content: "\2713"; 
+    display: block;
+    margin: 0 48% 10px;
+    background-color: #fff;
+    width: 36px;
+    height: 36px;
+    line-height: 32px;
+    text-align: center;
+    font-weight: bold;
+    border-width: 2px;
+    border-style: solid;
+    border-color: tomato;
+    border-radius: 50%;
+  }
+  
+  .multiSteps > li:after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: tomato;
+    position: absolute;
+    top: 16px;
+  }
+  
+  .multiSteps > li:last-child:after {
+    display: none;
+  }
+  
+  .multiSteps > li.isActive:before {
+    background-color: #fff;
+    border-color: tomato;
+  }
+  
+  .multiSteps > li.isActive ~ li {
+    color: #808080;
+  }
+  
+  .multiSteps > li.isActive ~ li:before {
+    background-color: #ededed;
+    border-color: #ededed;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+
+    .form{
+      padding: 5px;
+    }
+
+    .multiSteps > li:after {
+      width: 90%;
+    }
+  }
+  
+  /* Portrait */
+  @media only screen and (max-width: 480px)  {
+    .multiSteps > li {
+      color: red !important;
+    }
+  }
+  
+  .formContainer h2 {
+    text-align: center;
+  }
+  
+  .nextBtn {
+    color: rgb(76, 76, 76);
+    width: 80px;
+    height: 40px;
+    margin: 20px 20px;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #892be288;
+    border-radius: 10px;
+    transition: .5s;
+    font-size: 1em;
+  }
+  
+  .btn, .btn2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn2 {
+    width: 100%;
+  }
+  
+  .nextBtn:hover {
+    color: #ffffff;
+    background-color: #892be288;
+    border: none;
+  }
+  

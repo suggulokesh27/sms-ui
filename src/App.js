@@ -1,34 +1,28 @@
-import React, { Suspense, lazy } from 'react';
-// import DefaultLayout from './Layout/DefaultLayout';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import {  routes } from './routes';
-import Dashboard from './View/Dashboard/Dashboard';
-import Login from './Pages/Login';
+import React, { Suspense } from 'react'
+import { Route, Routes } from 'react-router-dom'
+
+import Layout from './Layout/Layout'
+import Dashboard from './Views/Dashboard/Dashboard'
+
+import { routes } from './routes'
 
 
-const DefaultLayout = lazy(() => import("./Layout/DefaultLayout"))
-
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <Suspense fallback={<p>Loading...</p>}>
-        <Routes>
+    <Suspense fallback={<p>Loading...</p>}>
+      <Routes>
+        <Route path="/" element={ <Layout /> }>
+          <Route path='/' element={ <Dashboard /> }/>
 
-          {/* Pages */}
-          <Route path='/login' element={<Login />} />
-        
-        
-          <Route path="/" element={<DefaultLayout />}>
-            <Route index element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
             {routes.map((route, index) => (
               <Route key={index} path={route.path} element={<route.element />} />
             ))}
-          </Route>
-          
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
-  );
+
+        </Route>
+      </Routes>
+    </Suspense>
+  )
 }
 
-export default App;
+export default App

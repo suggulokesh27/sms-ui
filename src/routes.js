@@ -1,44 +1,64 @@
 import React from "react";
-// const Student = React.lazy(()=> import("./View/Student/Student"));
-// const Exam = React.lazy(()=> import("./View/Exam/Eaxm"));
-// const Dashboard = React.lazy(()=> import("./View/Dashboard/Dashboard"));
 
-//Student Info
-const RegistrationForm = React.lazy(() => import("./View/Registration/RegistrationForm"));
-const StudentView = React.lazy(() => import("./View/Student/StudentView"));
+// Student Info
+const RegistrationForm = React.lazy(() => import("./Views/RegistrationForm/RegistartionForm"));
+const StudentView = React.lazy(() => import("./Views/Student/StudentRegistrationForm/StudentRegistrationForm"));
 
-//Exam
-const ExamRecords = React.lazy(()=>import("./View/Exam/ExamRecords"));
+// Attendance
+const Attendance = React.lazy(() => import('./Views/Student/Attendance/Attendance'));
 
-//Services 
-const Services = React.lazy(() => import('./View/Services'));
+// Records (Add, View, Update, Delete)
+const AddRecord = React.lazy(() => import('./Views/StudentRecords/AddRecord/AddRecord'));
+const ViewRecords = React.lazy(() => import('./Views/StudentRecords/ViewRecord/ViewRecord'));
+const UpdateRecord = React.lazy(() => import('./Views/StudentRecords/UpdateRecord/UpdateRecord'));
 
-const ManualServices = React.lazy(() => import('./View/ManualServices'));
+// Services
+const Services = React.lazy(() => import('./Views/Services/Services'));
+const ServiceForm = React.lazy(() => import('./Views/Services/ServiceForm'));
 
-//ContentBar route
+
+
+// ContentBar route
 export const routes = [
     {
-        name : "registration",
-        path : "student/add",
-        element : RegistrationForm 
+        name: "Registration",
+        path: "student/add",
+        element: RegistrationForm 
     },
     {
-        name : "View",
-        path : "student/view",
-        element : StudentView 
+        name: "View",
+        path: "student/view",
+        element: StudentView
     },
     {
-        name : "Exam",
-        path : "exam/records",
-        element : ExamRecords
+        name: "Attendance",
+        path: "student/attendance",
+        element: Attendance
     },
     {
-        name : "Services",
-        path : "services",
-        element : Services
-    },{
-        name : "ManualServices",
-        path : "manualservices",
-        element : ManualServices
+        name: "Services",
+        path: "services",
+        element: Services
+    },
+    {
+        name: "ServiceForm",
+        path: "serviceForm",
+        element: ServiceForm
+    },
+    // Records Section
+    {
+        name: "AddRecord",
+        path: "record/add",
+        element: AddRecord
+    },
+    {
+        name: "ViewRecords",
+        path: "record/view",
+        element: ViewRecords
+    },
+    {
+        name: "UpdateRecord",
+        path: "record/update",
+        element: UpdateRecord
     }
-]
+];
